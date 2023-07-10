@@ -25,6 +25,14 @@ ShapeType LineShape::GetType() const {
     return Line;
 }
 
+void LineShape::UpdateVertices(float angle, const Vec2& position) {
+    dynamicPoint = dynamicPoint.Rotate(angle);
+    dynamicPoint += position;
+
+    anchorPoint = anchorPoint.Rotate(angle);
+    anchorPoint += position;
+}
+
 Shape* LineShape::Clone() const {
     return new LineShape(anchorPoint, dynamicPoint);
 }

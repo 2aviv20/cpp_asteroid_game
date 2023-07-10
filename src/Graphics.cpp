@@ -70,11 +70,11 @@ void Graphics::DrawFillRect(int x, int y, int width, int height, Uint32 color) {
     boxColor(renderer, x - width / 2.0, y - height / 2.0, x + width / 2.0, y + height / 2.0, color);
 }
 
-void Graphics::DrawPolygon(int x, int y, const std::vector<Vec2>& vertices, Uint32 color,float scale) {
+void Graphics::DrawPolygon(int x, int y, const std::vector<Vec2>& vertices, Uint32 color) {
     for (int i = 0; i < vertices.size(); i++) {
         int currIndex = i;
         int nextIndex = (i + 1) % vertices.size();
-        lineColor(renderer, vertices[currIndex].x * scale, vertices[currIndex].y * scale, vertices[nextIndex].x * scale, vertices[nextIndex].y * scale, color);
+        lineColor(renderer, vertices[currIndex].x , vertices[currIndex].y , vertices[nextIndex].x , vertices[nextIndex].y , color);
     }
     filledCircleColor(renderer, x, y, 1, color);
 }

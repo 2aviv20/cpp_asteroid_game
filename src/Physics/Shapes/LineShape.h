@@ -14,7 +14,9 @@ struct LineShape : public Shape {
     float GetMomentOfInertia() const override;
     ShapeType GetType() const override;
     virtual ~LineShape();
+    virtual void UpdateVertices(float angle, const Vec2& position);
     Shape* Clone() const override;
 };
+
 
 #endif // LINE_SHAPE

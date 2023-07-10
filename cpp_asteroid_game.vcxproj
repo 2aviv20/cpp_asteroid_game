@@ -133,11 +133,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Physics\Constraint.h" />
     <ClInclude Include="lib\SDL2_gfx\SDL2_gfxPrimitives.h" />
     <ClInclude Include="lib\SDL2_gfx\SDL2_gfxPrimitives_font.h" />
     <ClInclude Include="lib\SDL2_gfx\SDL2_imageFilter.h" />
     <ClInclude Include="lib\SDL2_gfx\SDL2_rotozoom.h" />
+    <ClInclude Include="lib\SDL_image.h" />
     <ClInclude Include="lib\SDL_ttf.h" />
+    <ClInclude Include="src\Physics\MatMN.h" />
+    <ClInclude Include="src\Physics\VecN.h" />
     <ClInclude Include="src\Player.h" />
     <ClInclude Include="src\Application.h" />
     <ClInclude Include="src\Graphics.h" />
@@ -155,11 +159,15 @@
     <ClInclude Include="src\Physics\Shapes\Shape.h" />
     <ClInclude Include="src\Physics\Stick.h" />
     <ClInclude Include="src\Physics\Vec2.h" />
+    <ClInclude Include="src\Physics\World.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Physics\Constraint.cpp" />
     <ClCompile Include="lib\SDL2_gfx\SDL2_gfxPrimitives.c" />
     <ClCompile Include="lib\SDL2_gfx\SDL2_imageFilter.c" />
     <ClCompile Include="lib\SDL2_gfx\SDL2_rotozoom.c" />
+    <ClCompile Include="src\Physics\MatMN.cpp" />
+    <ClCompile Include="src\Physics\VecN.cpp" />
     <ClCompile Include="src\Player.cpp" />
     <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="src\Graphics.cpp" />
@@ -176,10 +184,22 @@
     <ClCompile Include="src\Physics\Shapes\PolygonShape.cpp" />
     <ClCompile Include="src\Physics\Stick.cpp" />
     <ClCompile Include="src\Physics\Vec2.cpp" />
+    <ClCompile Include="src\Physics\World.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SDL2.dll" />
+    <None Include="SDL2_image.dll" />
     <None Include="SDL2_ttf.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="assets\basketball.png" />
+    <Image Include="assets\bowlingball.png" />
+    <Image Include="assets\crate.png" />
+    <Image Include="assets\metal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="assets\Milky Mania.ttf" />
+    <Font Include="assets\OpenSans-Bold.ttf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

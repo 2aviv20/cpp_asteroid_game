@@ -8,6 +8,7 @@ struct CircleShape : public Shape {
     virtual ~CircleShape();
     ShapeType GetType() const override;
     Shape* Clone() const override;
+    void UpdateVertices(float angle, const Vec2& position) override;
     float GetMomentOfInertia() const override;
 };
 

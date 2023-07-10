@@ -3,12 +3,11 @@
 #include "PolygonShape.h"
 
 struct BoxShape : public PolygonShape {
-    float width;
-    float height;
     BoxShape(float width, float height);
     virtual ~BoxShape();
     ShapeType GetType() const override;
     Shape* Clone() const override;
+    float GetMomentOfInertia() const override;
 };
 
 #endif

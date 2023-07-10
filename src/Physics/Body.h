@@ -1,12 +1,18 @@
 #ifndef BODY_H
 #define BODY_H
 
+#include <SDL.h>
+#include "../../lib/SDL_image.h"
+
 #include "Vec2.h"
 #include "./Shapes/Shape.h"
-#include "./Shapes/PolygonShape.h"
 #include "./Shapes/BoxShape.h"
+#include "./Shapes/CircleShape.h"
+#include "./Shapes/PolygonShape.h"
+
 
 struct Body {
+    // Linear motion
     Vec2 position;
     Vec2 velocity;
     Vec2 acceleration;
@@ -25,29 +31,43 @@ struct Body {
     float invMass;
     float I;
     float invI;
-    float scale = 1;
+
     // Coefficient of restitution (elasticity)
     float restitution;
 
-    std::uint32_t color = 0xFFFFFFFF;
-    Shape* shape = nullptr;
-    bool isCollide = false;
+    // Coefficient of friction
+    float friction;
 
-    Body(const Shape& shape, float x, float y, float mass, float scale);
+    // Pointer to the shape/geometry of this rigid body
+    Shape* shape = nullptr;
+
+    // Pointer to an SDL texture
+    SDL_Texture* texture = nullptr;
+
+    Body(const Shape& shape, float x, float y, float mass);
     ~Body();
-    void changeColor(std::uint32_t color);
+
+    bool IsStatic() const;
+
     void AddForce(const Vec2& force);
+    void AddTorque(float torque);
     void ClearForces();
     void ClearTorque();
 
-    void Integrate(float dt);
-    void ApplyImpulse(const Vec2& j);
-    bool IsStatic() const;
+    void SetTexture(const char* textureFileName);
+
+    Vec2 LocalSpaceToWorldSpace(const Vec2& point) const;
+    Vec2 WorldSpaceToLocalSpace(const Vec2& point) const;
+
+    void ApplyImpulseLinear(const Vec2& j);
+    void ApplyImpulseAngular(const float j);
+    void ApplyImpulseAtPoint(const Vec2& j, const Vec2& r);
 
     void IntegrateLinear(float dt);
     void IntegrateAngular(float dt);
 
-    void Update(float dt);
+    void IntegrateForces(const float dt);
+    void IntegrateVelocities(const float dt);
 };
 
 #endif
